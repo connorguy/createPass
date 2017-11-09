@@ -11,7 +11,7 @@ So how does it work?
 4) createPass will then take a length 16 substring from the hash and uses this as your password.
 	- The password will be shown onto your screen, and if on osx copied to your clipboard.
 
-To Run createPass
+To Run createPass type the following into terminal
 ```bash
 . /Location/on/disk/createPass.sh
 ```
