@@ -1,38 +1,30 @@
 #!/bin/bash
 
-# Bash script to create and store unique secure passwords that are stored in an encrypted file. 
-# Check if a createPass file is available, if not create one and encrypt it.
-# Ask user what website the password is for so that it can be stored in createPass file.
-# Use “openssl rand -base64 20”.
-# Convert to base58 encoding.
-# Store password in createPass file and output password to shell.
-# Close encrypted file. 
-# Ask if user is done with password, clean screen.
-# createPass should ideally be stored in a backed up location.
-
 # This is where you can change the location of your file.
 fileName="text"
 
-# read -sp "Password:" passw;
-# echo ""
-# echo  -n $'Website Name: \n::'
-# read website;
-# echo -n $'\nPlease select a function\nView: v\nNew: n\n::'
-# read option;
+# Validate that a passwordfile has been setup
 
-# clear the screen
-tput clear
-# Move cursor to screen location X,Y (top left is 0,0)
-tput cup 3 15
+echo $'Now would be a greate time to check your surroundings!\n'
+echo $'**Note that I  can\'t handle any ctrl^c exits and data maybe lost or exposed!\n'
+read -p "Got it! [return] " isDone;
+printf "\033c" # Actually clears text from terminal
+
+# Get password for password file
 read -sp "Please Enter Your Password:" passw;
+printf "\033c" # Actually clears text from terminal
 
-# clear the screen
-tput clear
+# Decrypt file for use
+# openssl aes-256-cbc -d -a -in text -out text
+# validate user entered the correct password
+# perferably this will store a tmp copy in memory to be modded then write the new modded vsn over the old
+
+# MENU SETUP
 # Move cursor to screen location X,Y (top left is 0,0)
 tput cup 3 15
 # Set a foreground colour using ANSI escape
-tput setaf 3
-echo "Terminal Password Tool"
+tput setaf 6
+echo "Welcome To creatPASS"
 tput sgr0
 tput cup 5 17
 # Set reverse video mode
@@ -49,34 +41,28 @@ tput cup 10 15
 read -p "Enter your choice [1-2] " option;
 
 
-echo  -n $'\nWebsite Name: \n::'
-read website;
+echo $'\nWebsite Name:'
+read -p "::" website;
 
-
-
-# Check that password file exists
-#TODO
-
-# Decrypt file for use
-# openssl aes-256-cbc -d -a -in text -out text
-# perferably this will store a tmp copy in memory to be modded then write the new modded vsn over the old
 
 # For Generating a new password.
 if [ $option -eq 1 ]; then
-	# Append website name
-	# Append site password
-
 	# Generate a new password using openssl
 	opensslCommand="openssl rand -base64 18"
 	newPassword=eval $opensslCommand
+
+	# Append website name
+
+	# Append site password
+
 	echo ""
-	echo $'\nAll done. Website $website saved.\n'
+	echo "Website <$website> saved."
 fi
 
 # For retrieving a password
 if [ $option -eq 2 ]; then
 	# Get website password from file
-	echo "Site: $website"
+	# assuming a grep might work for this
 	echo "Password: "
 fi
 
