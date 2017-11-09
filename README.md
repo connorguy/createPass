@@ -10,3 +10,5 @@ Close encrypted file.
 Ask if user is done with password, clean screen.
 
 createPass should ideally be stored in a backed up location. Alias can be used to expedite usage (cut out the cd sh commands).
+
+****This project is incomplete!
