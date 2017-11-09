@@ -32,7 +32,7 @@ echo -n $newPassword | pbcopy
 # Output to user the new password.
 tput setaf 3
 tput cup 10 15
-echo "New Password for $website: $newPassword"
+echo "Password for $website: $newPassword"
 tput sgr0
 tput cup 11 15
 echo "Copied to your clipboard!"
