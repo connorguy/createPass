@@ -15,7 +15,9 @@ echo 'Enter The Website URL:'
 tput cup 6 15
 read -p "::" website;
 tput cup 7 15
-read -sp "Please Enter Your createPass Password:" password;
+echo "Please Enter Your createPass Password:"
+tput cup 8 15
+read -sp "::" password;
 echo ""
 
 seedString=$password$website
