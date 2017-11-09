@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# MENU SETUP
-# Move cursor to screen location X,Y (top left is 0,0)
 tput clear
 tput cup 3 15
 # Set a foreground colour using ANSI escape
@@ -17,27 +15,24 @@ read -sp "Please Enter Your createPass Password:" password;
 echo ""
 
 seedString=$password$website
-echo $"$seedString"
-echo ""
 
-echoPass="echo -n $seedString"
-hashCommand="shasum -a 256 -t"
-hash1=eval $echoPass | $hashCommand
-echo $hash1
-echoPass="echo -n $hash1"
-hash2=eval $echoPass | $hashCommand
+hash1=$(echo -n $seedString | shasum -a 256 -t)
+hash2=$(echo -n $hash1 | shasum -a 256 -t)
 
-newPassword=$(echo $hash2 | cut -c2-7) 
-echo $newPassword
+newPassword=$(echo $hash2 | cut -c1-17) 
+echo -n $newPassword | pbcopy
 
-
-# echo $newPassword
-
+tput setaf 3
+tput cup 10 15
+echo "New Password for $website: $newPassword"
+tput sgr0
+tput cup 11 15
+echo "Copied to your clipboard!"
 
 
 # Burn password
 
-
+tput cup 13 15
 read -p "All Done? [return] " isDone;
 printf "\033c" # Actually clears text from terminal
 
