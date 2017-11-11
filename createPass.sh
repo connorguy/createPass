@@ -20,10 +20,11 @@ tput cup 8 15
 read -sp "::" password;
 echo ""
 
-seedString=$password$website
+seedString="$password$website"
 # Double has the users input
-hash1=$(echo -n $seedString | shasum -a 256 -t)
-hash2=$(echo -n $hash1 | shasum -a 256 -t)
+hash1=$(echo -n "$seedString" | shasum -a 256 -t)
+hash2=$(echo -n "$hash1" | shasum -a 256 -t)
+echo $hash1
 
 # Trim hash to something more usable.
 newPassword=$(echo $hash2 | cut -c1-17) 
