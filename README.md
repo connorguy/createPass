@@ -7,7 +7,7 @@ However you can always comeback and retrieve the password by entering your creat
 So how does it work? 
 1) createPass will prompt you to enter a password that you only use for createPass. 
 2) createPass will then prompt you for the website that you are creating a password for.
-3) These two inputs are then hashed (twice for good measure!) using sha256.
+3) These two inputs are then hashed using sha256.
 4) createPass will then take a length 16 substring from the hash and uses this as your password.
 	- The password will be shown onto your screen, and if on osx copied to your clipboard.
 
