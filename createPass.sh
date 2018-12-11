@@ -38,4 +38,6 @@ echo "Copied to your clipboard!"
 
 tput cup 13 15
 read -p "All Done? [return] " isDone;
+# Clear password off clipboard
+echo " " | pbcopy
 printf "\033c" # Actually clears text from terminal
