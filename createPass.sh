@@ -8,7 +8,7 @@ tput clear
 tput cup 3 15
 # Set a foreground colour using ANSI escape
 tput setaf 6
-echo "Welcome To creatPASS"
+echo "Welcome To createPass"
 tput sgr0
 tput cup 5 15
 echo 'Enter The Website URL:'
